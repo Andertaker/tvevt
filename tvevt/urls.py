@@ -1,16 +1,17 @@
 # -*- coding: utf-8 -*-
-import settings
 from django.conf.urls import patterns, include, url
 #from rest_framework import routers
 from rest_framework.urlpatterns import format_suffix_patterns
 
+import views
+import settings
+from models import User
+
 from django.contrib import admin
 admin.autodiscover()
 
-import views
-from models import User
 
-
+""" API """
 apipatterns = patterns('',
     url('^user$', views.CurrentUserView.as_view(), name="user_detail"),
     url('^users/(?P<pk>\d+)$', views.UsersView.as_view()),
@@ -18,6 +19,7 @@ apipatterns = patterns('',
                        
 )
 #apipatterns = format_suffix_patterns(apipatterns, allowed=['json'])
+""" API """
 
 
 urlpatterns = patterns('',

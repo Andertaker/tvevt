@@ -7,17 +7,11 @@ from django.shortcuts import render
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
-#from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
-
-from oauthlib.oauth2 import WebApplicationClient
-#from django.contrib.auth.models import User
-
 from rest_framework import generics
-#from rest_framework import filters
-#from rest_framework import viewsets
 from rest_framework.response import Response
 from rest_framework import status
+from oauthlib.oauth2 import WebApplicationClient
 
 from tvevt.serializers import UserSerializer
 from models import User
@@ -74,8 +68,6 @@ class UsersByAgeView(generics.ListAPIView):
         queryset = User.objects.all()
         age = self.request.GET.get('age', 0)
         age = int(age)
-        print age
-        
 
         if age > 0:
             today = date.today()
