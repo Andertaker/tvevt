@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+
+{% block title %}Авторизация{% endblock %}
+
+
+{% block base_content %}
+	{% if user.is_authenticated %}
+	
+		Добро пожаловать {{ user.first_name }}!<br><br>
+		Посмотреть  <a href="{% url 'user_detail' %}">информацию</a><br>
+		
+		Вы уже авторизанованы.<br>
+		<a href="{% url 'logout' %}">Выйти</a><br>
+		
+	{% else %}
+	
+		<a target="_self" href="{{ vk_uri }}">Войти через ВК</a><br><br>
+		<!--
+		<a target="_self" href="{{ fb_uri }}">Войти через FaceBook</a><br><br>
+		!-->
+	{% endif %}
+
+
+{% endblock %}
+
+
+
+
+
+
+

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Авторизация{% endblock %}
+
+
+{% block base_content %}
+	<h1>Авторизация</h1>
+
+
+{% if user.is_authenticated %}
+	{{ user.username }} Вы же уже авторизорваны.
+	<a href="/accounts/logout">выйти</a>.<br/><br/>
+{% else %}
+
+	{% if form.errors %}
+		<p class="error">Неверное имя пользователя или пароль!</p>
+	{% endif %}
+
+	<form method="post" action="/accounts/login">
+		{% csrf_token %}
+		<table>
+			<tr>
+			    <td><label for="id_username">Имя пользователя</label></td>
+			    <td><input required name="username" value="{{form.username.value|default:''}}" maxlength="100" id="id_username"></td>
+			</tr>
+			<tr>
+			    <td><label for="id_password">Пароль</label></td>
+			    <td><input required id="id_password" value="{{form.password.value|default:''}}" maxlength="100" type="password" name="password"></td>
+			</tr>
+		</table>
+		
+		<input type="submit" value="Войти" />
+		<input type="hidden" name="next" value="{{ next }}" />
+	</form>
+	
+	<script type="text/javascript">
+	document.getElementById('id_username').focus()
+	</script>
+	
+	
+{% endif %}
+
+{% endblock %}
