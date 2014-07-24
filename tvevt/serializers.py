@@ -4,8 +4,6 @@ from rest_framework import serializers
 
 
 
-
-
 class UserSerializer(serializers.ModelSerializer):
     age = serializers.IntegerField(read_only=True)
     

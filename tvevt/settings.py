@@ -25,7 +25,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'tvevt_main',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
-        'USER': 'tvevt',
+        'USER': 'tvevt1',
         'PASSWORD': 't123456',
         'HOST': '127.0.0.1',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': 3306,                      # Set to empty string for default.
@@ -123,12 +123,12 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     #'django.contrib.messages.context_processors.messages',
     
-    'django_facebook.context_processors.facebook',
+    #'django_facebook.context_processors.facebook',
 )
 
 
 AUTHENTICATION_BACKENDS = (
-    'django_facebook.auth_backends.FacebookBackend',
+    #'django_facebook.auth_backends.FacebookBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
 
@@ -161,7 +161,7 @@ INSTALLED_APPS = (
     'tvevt',
     
     'rest_framework',
-    'django_facebook',
+    #'django_facebook',
     #'oauth2_provider',
 )
 

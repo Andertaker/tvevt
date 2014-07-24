@@ -52,18 +52,14 @@ class User(AbstractUser):
     fb_user_id = models.PositiveIntegerField(null=True, default=None, blank=True)
     
     gender = models.CharField(max_length=6, choices=genders, default='', blank=True)
-    #age = models.PositiveSmallIntegerField(null=True, default=None, blank=True)
     birth_date = models.DateField(null=True, default=None, blank=True)
 
     objects = CustomUserManager()
     backend = 'django.contrib.auth.backends.ModelBackend'
     
     
-    def __init__(self, *args, **kwargs):
-        super(AbstractUser, self).__init__(*args, **kwargs)
-        self.age = self.get_age()
-    
-    def get_age(self):
+    @property
+    def age(self):
         if self.birth_date:
             today = date.today()
             age = today.year - self.birth_date.year

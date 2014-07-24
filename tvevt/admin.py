@@ -22,7 +22,7 @@ class UserForm(forms.ModelForm):
 class UserAdmin(admin.ModelAdmin):
     form = UserForm
     
-    list_display = ('username', 'last_name', 'first_name', 'birth_date', 'get_age', 'is_staff', 'is_superuser', 'is_active')
+    list_display = ('username', 'last_name', 'first_name', 'birth_date', 'age', 'is_staff', 'is_superuser', 'is_active')
 
     
     

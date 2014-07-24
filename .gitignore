@@ -1,0 +1,10 @@
+*.pyc
+*~
+
+tvevt_nginx.conf
+uwsgi_params
+.project
+.pydevproject
+
+.settings/*
+bak/*
